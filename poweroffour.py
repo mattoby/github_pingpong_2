@@ -10,6 +10,61 @@ Follow up: Could you solve it without loops/recursion?
 #def isPowerOfFour(self, num):
 
 def isSquare(num):
+
+    """Test Cases
+
+    >>> isSquare(4)
+    True
+
+    >>> isSquare(-2)
+    False
+
+    >>> isSquare(3)
+    (False, [])
+
+    >>> isSquare(1)
+    (True, 1)
+
+    >>> isPowerOfFour(4)
+    True
+
+    >>> isPowerOfFour(0)
+    False
+
+    >>> isPowerOfFour(1)
+    True
+
+    >>> isPowerOfFour(16)
+    True
+
+    >>> isPowerOfFour(14)
+    False
+
+    >>> isPowerOfFour(3)
+    False
+
+    """
+
+
+
+    # Seems like it does more than returning justa binary True False,
+    # it returns a tuple with True/False as first element and
+    # the square root of the number as the second element.
+
+
+    # Also it fails for the test case isSquare(3). 
+
+
+    ## Cases it works:
+    #
+    # It works for powers of 4 when the power is greater than or equal to one
+
+
+    ## Cases it breaks:
+    #
+    # When it is not a power of 4. Like 3 or 14 then we get error not False 
+    # When the power is 0. For 4^0 = 1, we get False not True
+
     '''
     Determines if a number 'num' is a square.
 
@@ -47,6 +102,10 @@ def isPowerOfFour(num):
 
     return ispoweroffour
 
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
 
 
 
