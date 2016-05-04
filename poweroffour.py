@@ -13,6 +13,19 @@ def isSquare(num):
     '''
     Determines if a number 'num' is a square.
     '''
+    root = []
+    issquare = False
+
+    for n in [x+1 for x in range(num/2)]:
+        currsquare = n*n
+        if num==currsquare:
+            issquare = True
+            root = n
+            break
+        if num<currsquare:
+            break
+
+    return issquare, root
 
 
 def isPowerOfFour(num):
@@ -20,6 +33,8 @@ def isPowerOfFour(num):
     :type num: int
     :rtype: bool
     """
+
+    ispoweroffour = False
 
     issquare, root = isSquare(num)
     if issquare:
