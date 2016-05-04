@@ -46,6 +46,7 @@ def isSquare(num):
     """
 
 
+    # Comments for the function isSquare:
 
     # Seems like it does more than returning justa binary True False,
     # it returns a tuple with True/False as first element and
@@ -55,12 +56,15 @@ def isSquare(num):
     # Also it fails for the test case isSquare(3). 
 
 
-    ## Cases it works:
+
+    # Comments for the function ispoweroffour:
+
+    ## Cases it works for:
     #
     # It works for powers of 4 when the power is greater than or equal to one
 
 
-    ## Cases it breaks:
+    ## Cases it breaks under:
     #
     # When it is not a power of 4. Like 3 or 14 then we get error not False 
     # When the power is 0. For 4^0 = 1, we get False not True
