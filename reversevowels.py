@@ -98,6 +98,12 @@ class MyTest(unittest.TestCase):
     def test_twowords(self):
         self.assertEqual(reverseVowels('hello world'),'hollo werld')
 
+    def test_punctuation(self):
+    	self.assertEqual(reverseVowels('hello! world!'),'hollo! werld!')
+
+    def test_numbers(self):
+    	self.assertEqual(reverseVowels('h3llo friend'),'h3lle friond')
+
 if __name__=='__main__':
     unittest.main()
 
