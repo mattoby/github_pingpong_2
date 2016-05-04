@@ -12,6 +12,9 @@ Follow up: Could you solve it without loops/recursion?
 def isSquare(num):
     '''
     Determines if a number 'num' is a square.
+
+    The algorithm checks num for being equal to each whole square number up to (num/2)^2, and then stops searching if num is not found to be equal to any square number in that range.
+
     '''
     root = []
     issquare = False
@@ -30,6 +33,8 @@ def isSquare(num):
 
 def isPowerOfFour(num):
     """
+    Checks for num being a fourth root, by checking if it is the square of a square (e.g., to check if num=x*x*x*x where x is an integer, this checks the equivalent statements that num=y*y and y=x*x, where x and y are both integers).
+
     :type num: int
     :rtype: bool
     """
