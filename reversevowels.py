@@ -1,11 +1,10 @@
 import unittest
 
 ## Reverse Vowels of a String ##
-
+'''
 
 ## We will write a function that will take a string s and
 ## reverse only the vowels of a string
-
 
 # Example 1:
 
@@ -19,71 +18,88 @@ import unittest
 
 # Expected output = "leotcede"
 
-
 # here is a list of vowels in english language
-vowels = ['a','e','o','u','i']
+'''
 
+def split_vowels_and_consonants(s):
+	'''
+	creates a vowel and a consonant list from an initial string s
+	indicator is an indicator of whether an index of s is a vowel.
+	'''
 
-def reverseVowels(s):
-
-	# create strings to store consonants and vowels separately.
+	vowels = ['a','e','o','u','i']
 	s_consonants = ''
 	s_vowels = ''
+
 	# indicator function keeps track of the indices for vowels
 	# and consonants in the original string. 1 -> vowel, 0-> consonant
 	indicator = [0] * len(s)
 	for i in xrange(len(s)):
 
 		if s[i] in vowels:
-
 			s_vowels = s_vowels + s[i]
 			indicator[i] = 1
-		else:
 
+		else:
 			s_consonants = s_consonants + s[i]
 
-	# now we seperated vowels from consonants we will reverse the vowels
+	return s_vowels, s_consonants, indicator
 
-	# initialize a list to store reversed vowels
-	vowel_reversed = ['0'] * len(s_vowels)
 
-	# loop to reverse vowels
-	for i in xrange(len(s_vowels)):
+def reverse_string(s):
+	'''
+	reverse a string
+	'''
+	# initialize a list to store reversed values
+	s_reversed = ['0'] * len(s)
 
-		vowel_reversed[i] = s_vowels[len(s_vowels)-1-i]
+	# loop to reverse string
+	for i in xrange(len(s)):
+		s_reversed[i] = s[len(s)-1-i]
 
-	# Now we will put back the consonanats and reversed vowels
+	return s_reversed
 
+
+def merge_vowels_and_consonants(s_vowels, s_consonants, indicator):
+	'''
+	merges a vowel and a consonant list into positions in a new list, where 'indicator' indicates where the vowels should be. this is the reverse function of split_vowels_and_consonants.
+	'''
 	# initialize a list to store string with reversed vowels
-	reversed_s = ['a'] * len(s)
-
+	s = ['0'] * len(indicator)
 
 	# loop over the indicator. If one get the string from vowels
 	# if 0 get string from consonants. Modify vowels and consonants.
 
-	for i in xrange(len(s)):
+	for i in xrange(len(indicator)):
 
 		if indicator[i] == 1:
 
-			reversed_s[i] = vowel_reversed[0]
-			vowel_reversed = vowel_reversed[1::]
+			s[i] = s_vowels[0]
+			s_vowels = s_vowels[1::]
 		else:
 
-			reversed_s[i] = s_consonants[0]
+			s[i] = s_consonants[0]
 			s_consonants = s_consonants[1::]
 
-	# Now we have the reversed string in a list
-	# All we need to do is change the list into a string
+	return s
 
-	# initialize empty string
-	reversed = ''
 
-	# fill it from the list we created called reversed_s
-	for s in reversed_s:
-		reversed = reversed + s
+def reverseVowels(s):
+
+	# create strings to store consonants and vowels separately.
+	s_vowels, s_consonants, indicator = split_vowels_and_consonants(s)
+
+	# now reverse the vowels
+	s_vowels = reverse_string(s_vowels)
+
+	# Now we will put back the consonanats and reversed vowels
+	s = merge_vowels_and_consonants(s_vowels, s_consonants, indicator)
+
+	# Change the list into a string
+	s = ''.join(s)
 
 	# return the string whose vowels are reversed
-	return reversed
+	return s
 
 
 ### Tests:
